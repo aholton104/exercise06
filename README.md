@@ -224,7 +224,7 @@ Yes, the `.gitignore` works as intended. The `results/` and `data/` dirs no long
 ### 16: Copy the FASTQ file
 
 ```bash
-
+cp ../garrigos/fastq/S63_R1.fastq.gz data/
 ```
 
 The output of the command was:
@@ -236,48 +236,50 @@ The output of the command was:
 ### 17: Check Git status again
 
 ```bash
-
+git status
 ```
 
 The output of the command was:
 
 ```
-
+On branch main
+nothing to commit, working tree clean
 ```
 
 *Answer*: Does the FASTQ file show up? Why/why not?
 
+No,  `S63_R1.fastq.gz` does not show up after executing the `git status` command because the dir it is in, `data/` is listed in the `.gitignore` file and changes to that dir are ignored. 
+
+
 ### 18: Number of reads in the FASTQ file
 
 ```bash
-
+zcat data/S63_R1.fastq.gz | wc -l
 ```
 
 The output of the command was:
 
 ```
-
+2000000
 ```
 
-*Answer*: Number of reads: _____
+*Answer*: Number of reads: **500000**
 
 ### 19: Reads with at least 10 consecutive `N`s
 
 ```bash
-
+zcat data/S63_R1.fastq.gz | grep -c "NNNNNNNNNN"
 ```
 
 The output of the command was:
 
 ```
-
+32612
 ```
 
-*Answer*: Number of reads with at least 10 consecutive `N`s: _____
+*Answer*: Number of reads with at least 10 consecutive `N`s: **8153**
 
 ### 20: Stage and commit README again
-
-<!-- No command/output needed here -- we check the repo directly. -->
 
 ## Bonus
 
