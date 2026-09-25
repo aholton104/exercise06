@@ -177,7 +177,18 @@ git status
 The output of the command was:
 
 ```
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
 
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        data/
+        results/
+
+no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
 ### 14: Create `.gitignore` and check status again
@@ -186,10 +197,19 @@ The output of the command was:
 touch .gitignore
 ```
 
+```bash
+git status 
+```
+
 The output of the command was:
 
 ```
-
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+        modified:   README.md
 ```
 
 *Answer*: Is the `.gitignore` working as intended?
