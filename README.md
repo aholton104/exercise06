@@ -1,22 +1,8 @@
-<!--
-GA2 README template.
-- Add your answers to each question's section below.
-- For each question, unless noted otherwise: put the command(s) you ran in
-  the corresponding ```bash code block, and the command's output in a plain ```
-  code block right below it -- these blocks are present in this template,
-  so you simply fill them in.
-  If a command doesn't print any output, you can leave the output block empty.
-- Delete instructional comments like this one as you go.
--->
-
 # GA2 answers - Abigail Holton
 
 ## Part A: Starting a Git repository
 
 ### 1: Copy the template file and add your name
-
-<!-- Put your command in the bash code block below. -->
-<!-- Add your name to the header line at the very top of this file. -->
 
 ```bash
 cp ../../../share/GA2/GA2_template.md README.md
@@ -45,8 +31,6 @@ cp ../garrigos/ref/annot.gtf.gz data/
 ```  
 
 The output of the command was:
-
-<!-- Put the command output in the code block below. -->
 
 ```
 
@@ -135,7 +119,7 @@ The output of the command was:
 ### 10: Count distinct sequences, save to `results/scaffolds.txt`
 
 ```bash
-
+grep -v "#" data/annot.gtf | cut -f 1 | sort | uniq > results/scaffolds.txt
 ```
 
 The output of the command was:
@@ -144,23 +128,28 @@ The output of the command was:
 
 ```
 
-*Answer*: Number of distinct sequences: _____
+*Answer*: Number of distinct sequences: **167**
 
 ### 11: Frequency table of feature types
 
 ```bash
-
+grep -v "#" data/annot.gtf | cut -f 3 | sort | uniq -c | sort -n
 ```
 
 The output of the command was:
 
 ```
-
+19673 gene
+25864 start_codon
+25892 stop_codon
+29347 transcript
+141444 CDS
+166177 exon
 ```
 
 ### 12: Predict, then run `grep -c "gene"`
 
-*Answer* (prediction, before running): a / b / c / d
+*Answer* (prediction, before running): **b**
 
 ```bash
 grep -c "gene" data/annot.gtf
@@ -169,18 +158,20 @@ grep -c "gene" data/annot.gtf
 The output of the command was:
 
 ```
-
+408397
 ```
 
 *Answer*: Was your prediction correct, and what does the comparison with
 the number of genes in your frequency table from question 11 tell you?
+
+Yes, my prediction was correct. Comparison with the frequency table says that this command overcounts the number of genes since the word "gene" appears in every line of the table in the `data.annot.gtf` file. `grep` matches the pattern in the "" marks, so it counts any line with the word "gene" in it. 
 
 ## Part C: Updating your Git repository
 
 ### 13: Check Git status
 
 ```bash
-
+git status
 ```
 
 The output of the command was:
@@ -191,10 +182,8 @@ The output of the command was:
 
 ### 14: Create `.gitignore` and check status again
 
-<!-- You can create the file with a command or in VS Code; include your git status command and its output. -->
-
 ```bash
-
+touch .gitignore
 ```
 
 The output of the command was:
@@ -205,9 +194,10 @@ The output of the command was:
 
 *Answer*: Is the `.gitignore` working as intended?
 
-### 15: Stage and commit `.gitignore`, then README again
+Yes, the `.gitignore` works as intended. The `results/` and `data/` dirs no longer appear when the `git status` command is executed.
 
-<!-- No command/output needed here -- we check the repo directly. -->
+
+### 15: Stage and commit `.gitignore`, then README again
 
 ## Part D: Exploring the FASTQ files with Unix data tools
 
