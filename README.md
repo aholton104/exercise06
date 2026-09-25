@@ -37,8 +37,12 @@ cp ../../../share/GA2/GA2_template.md README.md
 <!-- Put your command(s) in the bash code block below. -->
 
 ```bash
-
+mkdir data results
 ```
+
+```bash
+cp ../garrigos/ref/annot.gtf.gz data/
+```  
 
 The output of the command was:
 
@@ -51,13 +55,13 @@ The output of the command was:
 ### 5: File size of `annot.gtf.gz`
 
 ```bash
-
+ls data -lh
 ```
 
 The output of the command was:
 
 ```
-
+-rw-rw----+ 1 aeholton2005 PAS3493 5.1M Sep 25 12:33 annot.gtf.gz
 ```
 
 ### 6: Decompress the GTF file and check its size
@@ -69,60 +73,64 @@ gunzip data/annot.gtf.gz
 <!-- Put the command you used to check the size of annot.gtf below. -->
 
 ```bash
-
+ls data -lh
 ```
 
 The output of the command was:
 
 ```
-
+-rw-rw----+ 1 aeholton2005 PAS3493 123M Sep 25 12:33 annot.gtf
 ```
 
-*Answer*: The uncompressed file is approximately _____ times larger.
+*Answer*: The uncompressed file is approximately **24** times larger.
 
 ### 7: Total number of lines in `annot.gtf`
 
 ```bash
-
+wc -l data/annot.gtf
 ```
 
 The output of the command was:
 
 ```
-
+408402 data/annot.gtf
 ```
 
-*Answer*: Total number of lines: _____
+*Answer*: Total number of lines: **408402**
 
 ### 8: Number of lines in the table section (header lines counted by eye)
 
 ```bash
-
+head -n5 data/annot.gtf
 ```
 
 The output of the command was:
 
 ```
-
+#gtf-version 2.2
+#!genome-build TS_CPP_V2
+#!genome-build-accession NCBI_Assembly:GCF_016801865.2
+#!annotation-source NCBI RefSeq GCF_016801865.2-RS_2022_12
+NC_068937.1     Gnomon  gene    2046    110808  .       +       .       gene_id "LOC120427725"; transcript_id ""; db_xref "GeneID:120427725"; description "homeotic protein deformed"; gbkey "Gene"; gene "LOC120427725"; gene_biotype "protein_coding"; 
 ```
 
-*Answer*: Number of header lines (counted by eye): _____
+*Answer*: Number of header lines (counted by eye): **4**
 
-*Answer*: Number of lines in the table section: _____
+*Answer*: Number of lines in the table section: **408398**
 
 ### 9: Number of lines in the table section (`grep -v`)
 
 ```bash
-
+grep -vc "#" data/annot.gtf
 ```
 
 The output of the command was:
 
 ```
-
+408397
 ```
 
-*Answer*: Number of lines in the table section: _____
+*Answer*: Number of lines in the table section: **408397**
 
 ### 10: Count distinct sequences, save to `results/scaffolds.txt`
 
