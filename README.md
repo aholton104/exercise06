@@ -10,17 +10,11 @@ cp ../../../share/GA2/GA2_template.md README.md
 
 ### 2: Initialize a Git repository
 
-<!-- No command/output needed here -- we check the repo directly. -->
-
 ### 3: Stage and commit README
-
-<!-- No command/output needed here -- we check the repo directly. -->
 
 ## Part B: Exploring the GTF file with Unix data tools
 
 ### 4: Create `data`/`results` dirs and copy the GTF file
-
-<!-- Put your command(s) in the bash code block below. -->
 
 ```bash
 mkdir data results
@@ -30,10 +24,14 @@ mkdir data results
 cp ../garrigos/ref/annot.gtf.gz data/
 ```  
 
+```bash
+ls
+```
+
 The output of the command was:
 
 ```
-
+data READ.md results
 ```
 
 ### 5: File size of `annot.gtf.gz`
@@ -122,10 +120,13 @@ The output of the command was:
 grep -v "#" data/annot.gtf | cut -f 1 | sort | uniq > results/scaffolds.txt
 ```
 
+```bash
+wc -l results/scaffolds.txt
+
 The output of the command was:
 
 ```
-
+167 results/scaffolds.txt
 ```
 
 *Answer*: Number of distinct sequences: **167**
@@ -227,10 +228,14 @@ Yes, the `.gitignore` works as intended. The `results/` and `data/` dirs no long
 cp ../garrigos/fastq/S63_R1.fastq.gz data/
 ```
 
+```bash
+ls data/
+```
+
 The output of the command was:
 
 ```
-
+annot.gtf S63_R1.fastq.gz
 ```
 
 ### 17: Check Git status again
@@ -263,7 +268,7 @@ The output of the command was:
 2000000
 ```
 
-*Answer*: Number of reads: **500000**
+*Answer*: Number of reads: **500000** (since 4 lines in a FASTQ file make up a single read)
 
 ### 19: Reads with at least 10 consecutive `N`s
 
@@ -277,7 +282,7 @@ The output of the command was:
 32612
 ```
 
-*Answer*: Number of reads with at least 10 consecutive `N`s: **8153**
+*Answer*: Number of reads with at least 10 consecutive `N`s: **8153** (since 4 lines in a FASTQ file make up a single read **??**)
 
 ### 20: Stage and commit README again
 
@@ -285,10 +290,8 @@ The output of the command was:
 
 ### 21: Why do the counts from questions 8 and 9 differ?
 
-<!-- Add any commands you ran and their output in code blocks, as above. -->
-
-*Answer*:
+*Answer*: As I understand it, the final line of the GTF file is a series of `#` that is excluded from the `grep -vc` count command, but since it does not appear at the beginning of the file, it was not counted as part of the header. The `grep` command used in question 9 excludes all "#," so it was not included in the question 9 count.
 
 ### 22: Concepts/commands you don't (fully) understand
 
-*Answer*:
+*Answer*: While I understand the basic git workflow thus far, I am struggling with stringing commands together. It usually takes me several attemps and a lot of trouble-shooting to figure out what commands I can combine and what they do, like with the `grep`, `zcat` and `cat`, or `ls` commands. I am also struggling to understand the concept and application of the pipe. I am still not certain of what it really does and how it is used. I also don't know how the order in which you input commands changes the output. Another think I am unsure about is knowing how to intepret FASTQ files and convert "lines" to "reads." I know that 4 lines makes up a single read, but I do not know if the "divide by 4" rule applies to the outputs of all or just some commands for FASTQ files. 
