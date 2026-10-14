@@ -295,3 +295,6 @@ The output of the command was:
 ### 22: Concepts/commands you don't (fully) understand
 
 *Answer*: While I understand the basic git workflow thus far, I am struggling with stringing commands together. It usually takes me several attemps and a lot of trouble-shooting to figure out what commands I can combine and what they do, like with the `grep`, `zcat` and `cat`, or `ls` commands. I am also struggling to understand the concept and application of the pipe. I am still not certain of what it really does and how it is used. I also don't know how the order in which you input commands changes the output. Another think I am unsure about is knowing how to intepret FASTQ files and convert "lines" to "reads." I know that 4 lines makes up a single read, but I do not know if the "divide by 4" rule applies to the outputs of all or just some commands for FASTQ files. 
+
+
+10/14/2026 - Created GitHub repo (git@github.com:aholton104/exercise06.git)
